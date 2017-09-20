@@ -1,2 +1,2 @@
-# basiccrud
-:four: CRUD básico
+# basicdb
+:dolphin: CRUD e outras operações básicas

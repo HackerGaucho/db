@@ -1,14 +1,14 @@
 {
-	"name" : "basic/crud",
-	"description" : "CRUD básico",
+	"name" : "basic/db",
+	"description" : "CRUD e outras operações básicas",
 	"minimum-stability" : "stable",
 	"license" : "MIT",
 	"require" : {
 		"catfan/medoo" : "^1.4"
 	},
-	"autoload": {
-		"psr-4": {
-			"Basic\\": "/src"
+	"autoload" : {
+		"psr-4" : {
+			"Basic\\" : "/src"
 		}
 	}
 }
