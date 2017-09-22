@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * User: Anderson Ismael
  * Date: 20/set/2017
@@ -9,7 +9,7 @@ namespace Basic;
 
 use Medoo\Medoo;
 
-class CRUD{
+class DB{
         function __construct($db){
             $this->db = new Medoo([
                 // required
