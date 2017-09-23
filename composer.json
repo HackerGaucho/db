@@ -1,6 +1,6 @@
 {
 	"name" : "basic/db",
-	"description" : "CRUD e outras operações básicas",
+	"description" : "Sistema CRUD básico",
 	"minimum-stability" : "stable",
 	"license" : "MIT",
 	"require" : {
