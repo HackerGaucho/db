@@ -1,2 +1,2 @@
-# basicdb
+# db
 :dolphin: Sistema CRUD básico
