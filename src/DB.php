@@ -1,16 +1,28 @@
 <?php
 /**
-* User: Anderson Ismael
-* Date: 20/set/2017
-* IDE: Eclipse Oxygen 4.7.0
+* Basic
+* Micro framework em PHP
 */
-
 namespace Basic;
 
 use Medoo\Medoo;
 
-class DB{
-    function __construct($db){
+/**
+* Classe DB
+*/
+class DB
+{
+    /**
+    * Dados SQL
+    * @var array
+    */
+    private array $db;
+    /**
+    * Seta a variável $db
+    * @param array $db Dados SQL
+    */
+    public function __construct(array $db)
+    {
         $this->db = new Medoo([
             // required
             'database_type' => 'mysql',
@@ -23,39 +35,87 @@ class DB{
             'port' => 3306
         ]);
     }
-    function create($table,$data){
+    /**
+    * Criar linha no banco de dados
+    * @param  string $table Nome da tabela
+    * @param  array  $data  Dados da linha
+    * @return mixed         Retorna o ID da linha ou false
+    */
+    public function create(string $table, array $data):mixed
+    {
         $data['created_at']=time();
-        $this->db->insert($table,$data);
+        $this->db->insert($table, $data);
         $id=$this->db->id();
-        if($id){
+        if ($id) {
             return $id;
-        }else{
+        } else {
             return false;
         }
     }
-    function read($table,$where){
-        return $this->db->get($table,'*',$where);
+    /**
+    * Retorna uma linha do banco de dados
+    * @param  string $table Nome da tabela
+    * @param  array  $where Dados WHERE
+    * @return mixed         Retorna os dados da linha ou false
+    */
+    public function read(string $table, array $where):mixed
+    {
+        return $this->db->get($table, '*', $where);
     }
-    function update($table, $data, $where){
-        $created_at = $this->db->get($table,'created_at',$where);
+    /**
+    * Atualiza uma linha do banco de dados
+    * @param  string $table Nome da tabela
+    * @param  array  $data  Dados a serem atualizados
+    * @param  array  $where Dados WHERE
+    * @return bool          Retorna true ou false
+    */
+    public function update(string $table, array $data, array $where):bool
+    {
+        $created_at = $this->db->get($table, 'created_at', $where);
         $data['updated_at']=time();
         return $this->db->update($table, $data, $where);
         $data=[
             'created_at'=>$created_at
         ];
-        return $this->db->update($table,$data,$where);
+        return $this->db->update($table, $data, $where);
     }
-    function delete($table, $where){
+    /**
+    * Apaga uma linha do banco de dados
+    * @param  string $table Nome da tabela
+    * @param  array  $where Dados WHERE
+    * @return bool          Retorna true ou false
+    */
+    public function delete(string $table, array $where):bool
+    {
         return $this->db->delete($table, $where);
     }
-    //extra
-    function countResults($table,$where){
-        return $this->db->count($table,$where);
+    /**
+    * Retorna o número de linhas
+    * @param  string $table Nome da tabela
+    * @param  array  $where Dados WHERE
+    * @return integer       Número de linhas
+    */
+    public function countResults(string $table, array $where):integer
+    {
+        return $this->db->count($table, $where);
     }
-    function select($table,$where=null){
-        return $this->db->select($table,'*',$where);
+    /**
+    * Seleciona uma ou mais linhas
+    * @param  string $table Nome da tabela
+    * @param  array  $where Dados WHERE
+    * @return mixed         Retorna true ou false
+    */
+    public function select(string $table, array $where):mixed
+    {
+        return $this->db->select($table, '*', $where);
     }
-    function query($sql){
+    /**
+    * Consulta SQL RAW
+    * @param  string $sql Código SQL RAW
+    * @return mixed       Resposta RAW
+    */
+    public function query(string $sql):mixed
+    {
         return $this->db->query($sql)->fetchAll();
     }
 }
