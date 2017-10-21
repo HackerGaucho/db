@@ -69,7 +69,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return bool          Retorna true ou false
     */
-    public function update(string $table, array $data, array $where):bool
+    public function update(string $table, array $data, array $where)
     {
         $created_at = $this->db->get($table, 'created_at', $where);
         $data['updated_at']=time();
@@ -85,7 +85,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return bool          Retorna true ou false
     */
-    public function delete(string $table, array $where):bool
+    public function delete(string $table, array $where)
     {
         return $this->db->delete($table, $where);
     }
@@ -95,7 +95,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return integer       Número de linhas
     */
-    public function countResults(string $table, array $where):integer
+    public function countResults(string $table, array $where)
     {
         return $this->db->count($table, $where);
     }
