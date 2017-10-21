@@ -16,7 +16,7 @@ class DB
     * Dados SQL
     * @var array
     */
-    private array $db;
+    private $db;
     /**
     * Seta a variável $db
     * @param array $db Dados SQL
@@ -41,7 +41,7 @@ class DB
     * @param  array  $data  Dados da linha
     * @return mixed         Retorna o ID da linha ou false
     */
-    public function create(string $table, array $data):mixed
+    public function create(string $table, array $data)
     {
         $data['created_at']=time();
         $this->db->insert($table, $data);
@@ -58,7 +58,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return mixed         Retorna os dados da linha ou false
     */
-    public function read(string $table, array $where):mixed
+    public function read(string $table, array $where)
     {
         return $this->db->get($table, '*', $where);
     }
@@ -105,7 +105,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return mixed         Retorna true ou false
     */
-    public function select(string $table, array $where):mixed
+    public function select(string $table, array $where)
     {
         return $this->db->select($table, '*', $where);
     }
@@ -114,7 +114,7 @@ class DB
     * @param  string $sql Código SQL RAW
     * @return mixed       Resposta RAW
     */
-    public function query(string $sql):mixed
+    public function query(string $sql)
     {
         return $this->db->query($sql)->fetchAll();
     }
