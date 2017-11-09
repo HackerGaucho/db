@@ -95,7 +95,7 @@ class DB
     * @param  array  $where Dados WHERE
     * @return integer       Número de linhas
     */
-    public function countResults(string $table, array $where)
+    public function count(string $table, array $where)
     {
         return $this->db->count($table, $where);
     }
